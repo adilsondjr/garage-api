@@ -199,8 +199,8 @@ mvn spring-boot:run
   "event_type": "ENTRY|PARKED|EXIT",
   "license_plate": "ABC1234",
   "sector": "A",
-  "lat": 10.5,
-  "lng": 20.5
+  "latitude": 10.5,
+  "longitude": 20.5
 }
 ```
 
@@ -237,8 +237,8 @@ curl -X POST "http://localhost:8080/webhook" \
     "event_type": "ENTRY",
     "license_plate": "ABC1234",
     "sector": "A",
-    "lat": 10.5,
-    "lng": 20.5
+    "latitude": 10.5,
+    "longitude": 20.5
   }'
 ```
 
@@ -256,8 +256,8 @@ curl -X POST "http://localhost:8080/webhook" \
     "event_type": "PARKED",
     "license_plate": "ABC1234",
     "sector": "A",
-    "lat": 10.5,
-    "lng": 20.5
+    "latitude": 10.5,
+    "longitude": 20.5
   }'
 ```
 
@@ -275,8 +275,8 @@ curl -X POST "http://localhost:8080/webhook" \
     "event_type": "EXIT",
     "license_plate": "ABC1234",
     "sector": "A",
-    "lat": 10.5,
-    "lng": 20.5
+    "latitude": 10.5,
+    "longitude": 20.5
   }'
 ```
 
