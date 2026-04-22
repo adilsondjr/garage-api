@@ -1,15 +1,15 @@
 {
   "info": {
+    "_postman_id": "4805e1db-9d33-456b-8eb4-d066e8a7b9ca",
     "name": "Garage Management API",
     "description": "Collection simples para testes da API Garage Management System",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "garage-api-v1",
-    "version": "2.0.0"
+    "_exporter_id": "45540388",
+    "_collection_link": "https://go.postman.co/collection/45540388-4805e1db-9d33-456b-8eb4-d066e8a7b9ca?source=collection_link"
   },
   "item": [
     {
       "name": "📊 Garage Monitoring",
-      "description": "Endpoints para monitoramento e consulta do estado do estacionamento",
       "item": [
         {
           "name": "Get All Sectors",
@@ -37,7 +37,8 @@
               ]
             },
             "description": "Obter lista de todos os setores de estacionamento disponíveis"
-          }
+          },
+          "response": []
         },
         {
           "name": "Get All Parking Spots",
@@ -65,7 +66,8 @@
               ]
             },
             "description": "Obter lista de todas as vagas de estacionamento com informações de ocupação"
-          }
+          },
+          "response": []
         },
         {
           "name": "Get Real-time Occupancy",
@@ -93,13 +95,14 @@
               ]
             },
             "description": "Obter informações de ocupação em tempo real para todos os setores"
-          }
+          },
+          "response": []
         }
-      ]
+      ],
+      "description": "Endpoints para monitoramento e consulta do estado do estacionamento"
     },
     {
       "name": "💳 Revenue Management",
-      "description": "Endpoints para consultar e gerenciar receita",
       "item": [
         {
           "name": "Get Revenue by Sector and Date",
@@ -136,7 +139,8 @@
               ]
             },
             "description": "Obter receita de um setor específico em uma data específica"
-          }
+          },
+          "response": []
         },
         {
           "name": "Get Revenue - Invalid Date (Erro 400)",
@@ -171,13 +175,14 @@
               ]
             },
             "description": "Teste de erro: Data inválida deve retornar 400"
-          }
+          },
+          "response": []
         }
-      ]
+      ],
+      "description": "Endpoints para consultar e gerenciar receita"
     },
     {
       "name": "🚗 Webhook Events",
-      "description": "Endpoints para eventos de estacionamento via webhook",
       "item": [
         {
           "name": "Vehicle ENTRY (Chegada)",
@@ -192,7 +197,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"event_type\": \"ENTRY\",\n  \"license_plate\": \"ABC1234\",\n  \"sector\": \"A\",\n  \"latitude\": -23.5505,\n  \"longitude\": -46.6333\n}"
+              "raw": "{\n  \"event_type\": \"ENTRY\",\n  \"license_plate\": \"ABC1234\",\n  \"sector\": \"A\",\n  \"latitude\": -23.5505,\n  \"longitude\": -46.6333,\n  \"entry_time\": \"2026-04-22T13:22:04.04666538\"\n}"
             },
             "url": {
               "raw": "http://localhost:8080/webhook",
@@ -206,7 +211,8 @@
               ]
             },
             "description": "Registrar entrada de um veículo no estacionamento"
-          }
+          },
+          "response": []
         },
         {
           "name": "Vehicle PARKED (Estacionado)",
@@ -235,7 +241,8 @@
               ]
             },
             "description": "Registrar que veículo foi estacionado em uma vaga"
-          }
+          },
+          "response": []
         },
         {
           "name": "Vehicle EXIT (Saída)",
@@ -250,7 +257,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"event_type\": \"EXIT\",\n  \"license_plate\": \"ABC1234\",\n  \"sector\": \"A\",\n  \"latitude\": -23.5505,\n  \"longitude\": -46.6333\n}"
+              "raw": "{\n  \"event_type\": \"EXIT\",\n  \"license_plate\": \"ABC1234\",\n  \"sector\": \"A\",\n  \"latitude\": -23.5505,\n  \"longitude\": -46.6333,\n  \"exit_time\": \"2026-04-22T13:22:04.04666538\"\n}"
             },
             "url": {
               "raw": "http://localhost:8080/webhook",
@@ -264,13 +271,14 @@
               ]
             },
             "description": "Registrar saída de um veículo do estacionamento"
-          }
+          },
+          "response": []
         }
-      ]
+      ],
+      "description": "Endpoints para eventos de estacionamento via webhook"
     },
     {
       "name": "🧪 Error Scenarios - Testes de Erro",
-      "description": "Cenários de erro para validar tratamento",
       "item": [
         {
           "name": "Invalid Event Type (400)",
@@ -299,7 +307,8 @@
               ]
             },
             "description": "Teste com tipo de evento inválido"
-          }
+          },
+          "response": []
         },
         {
           "name": "Missing Required Fields (400)",
@@ -328,9 +337,11 @@
               ]
             },
             "description": "Teste sem campos obrigatórios"
-          }
+          },
+          "response": []
         }
-      ]
+      ],
+      "description": "Cenários de erro para validar tratamento"
     }
   ]
 }

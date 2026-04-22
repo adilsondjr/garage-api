@@ -238,7 +238,8 @@ curl -X POST "http://localhost:8080/webhook" \
     "license_plate": "ABC1234",
     "sector": "A",
     "latitude": 10.5,
-    "longitude": 20.5
+    "longitude": 20.5,
+    "entry_time": "2026-04-22T10:30:00"
   }'
 ```
 
@@ -276,7 +277,8 @@ curl -X POST "http://localhost:8080/webhook" \
     "license_plate": "ABC1234",
     "sector": "A",
     "latitude": 10.5,
-    "longitude": 20.5
+    "longitude": 20.5,
+    "exit_time": "2026-04-22T14:45:00"
   }'
 ```
 
