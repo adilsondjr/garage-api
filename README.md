@@ -140,7 +140,7 @@ O sistema ajusta automaticamente os preços baseado na ocupação do setor:
 
 ```bash
 # Clone o repositório
-git clone https://github.com/seu-usuario/garage-api.git
+git clone https://github.com/adilsondjr/garage-api.git
 cd garage-api
 
 # Inicie todos os serviços
