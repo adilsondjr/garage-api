@@ -1,5 +1,6 @@
 package br.com.teste.exception;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -95,6 +96,22 @@ public class GlobalExceptionHandler {
             HttpStatus.BAD_REQUEST.value()
         );
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<ErrorResponse> handleDataIntegrityViolation(
+            DataIntegrityViolationException ex, WebRequest request) {
+        String message = "Vehicle with this license plate is already in the system";
+        if (ex.getMessage() != null && ex.getMessage().contains("license_plate")) {
+            message = "Vehicle with this license plate is already in the system";
+        }
+        logger.warn("Data integrity violation: {}", ex.getMessage());
+        ErrorResponse errorResponse = new ErrorResponse(
+            message,
+            LocalDateTime.now(),
+            HttpStatus.CONFLICT.value()
+        );
+        return new ResponseEntity<>(errorResponse, HttpStatus.CONFLICT);
     }
 
     @ExceptionHandler(Exception.class)
