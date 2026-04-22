@@ -1,0 +1,39 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;MODE=MySQL
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: false
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: false
+  test:
+    database:
+      replace: any
+  cache:
+    type: simple
+
+logging:
+  level:
+    root: WARN
+    br.com.teste: DEBUG
+
+simulator:
+  url: http://localhost:3003
+  garage-endpoint: /garage
+
+pricing:
+  low-occupancy-threshold: 0.25
+  medium-occupancy-threshold: 0.5
+  high-occupancy-threshold: 0.75
+  low-occupancy-multiplier: 0.9
+  medium-occupancy-multiplier: 1.0
+  high-occupancy-multiplier: 1.1
+  full-occupancy-multiplier: 1.25
+  free-parsing-minutes: 30

@@ -1,0 +1,37 @@
+# Maven
+target/
+.m2/
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+
+# IDE
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Java
+*.class
+*.log
+.gradle/
+build/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# OS
+Thumbs.db
+.vscode/
+
+# Runtime
+*.pid

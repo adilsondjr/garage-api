@@ -1,0 +1,336 @@
+{
+  "info": {
+    "name": "Garage Management API",
+    "description": "Collection simples para testes da API Garage Management System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "garage-api-v1",
+    "version": "2.0.0"
+  },
+  "item": [
+    {
+      "name": "📊 Garage Monitoring",
+      "description": "Endpoints para monitoramento e consulta do estado do estacionamento",
+      "item": [
+        {
+          "name": "Get All Sectors",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/garage/sectors",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "garage",
+                "sectors"
+              ]
+            },
+            "description": "Obter lista de todos os setores de estacionamento disponíveis"
+          }
+        },
+        {
+          "name": "Get All Parking Spots",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/garage/spots",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "garage",
+                "spots"
+              ]
+            },
+            "description": "Obter lista de todas as vagas de estacionamento com informações de ocupação"
+          }
+        },
+        {
+          "name": "Get Real-time Occupancy",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/garage/occupancy",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "garage",
+                "occupancy"
+              ]
+            },
+            "description": "Obter informações de ocupação em tempo real para todos os setores"
+          }
+        }
+      ]
+    },
+    {
+      "name": "💳 Revenue Management",
+      "description": "Endpoints para consultar e gerenciar receita",
+      "item": [
+        {
+          "name": "Get Revenue by Sector and Date",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/revenue?date=2026-04-20&sector=A",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "revenue"
+              ],
+              "query": [
+                {
+                  "key": "date",
+                  "value": "2026-04-20",
+                  "description": "Data em formato YYYY-MM-DD"
+                },
+                {
+                  "key": "sector",
+                  "value": "A",
+                  "description": "Nome do setor (A, B, C, etc)"
+                }
+              ]
+            },
+            "description": "Obter receita de um setor específico em uma data específica"
+          }
+        },
+        {
+          "name": "Get Revenue - Invalid Date (Erro 400)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/revenue?date=invalid-date&sector=A",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "revenue"
+              ],
+              "query": [
+                {
+                  "key": "date",
+                  "value": "invalid-date"
+                },
+                {
+                  "key": "sector",
+                  "value": "A"
+                }
+              ]
+            },
+            "description": "Teste de erro: Data inválida deve retornar 400"
+          }
+        }
+      ]
+    },
+    {
+      "name": "🚗 Webhook Events",
+      "description": "Endpoints para eventos de estacionamento via webhook",
+      "item": [
+        {
+          "name": "Vehicle ENTRY (Chegada)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event_type\": \"ENTRY\",\n  \"license_plate\": \"ABC1234\",\n  \"sector\": \"A\",\n  \"latitude\": -23.5505,\n  \"longitude\": -46.6333\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/webhook",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "webhook"
+              ]
+            },
+            "description": "Registrar entrada de um veículo no estacionamento"
+          }
+        },
+        {
+          "name": "Vehicle PARKED (Estacionado)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event_type\": \"PARKED\",\n  \"license_plate\": \"ABC1234\",\n  \"sector\": \"A\",\n  \"latitude\": -23.5505,\n  \"longitude\": -46.6333\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/webhook",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "webhook"
+              ]
+            },
+            "description": "Registrar que veículo foi estacionado em uma vaga"
+          }
+        },
+        {
+          "name": "Vehicle EXIT (Saída)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event_type\": \"EXIT\",\n  \"license_plate\": \"ABC1234\",\n  \"sector\": \"A\",\n  \"latitude\": -23.5505,\n  \"longitude\": -46.6333\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/webhook",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "webhook"
+              ]
+            },
+            "description": "Registrar saída de um veículo do estacionamento"
+          }
+        }
+      ]
+    },
+    {
+      "name": "🧪 Error Scenarios - Testes de Erro",
+      "description": "Cenários de erro para validar tratamento",
+      "item": [
+        {
+          "name": "Invalid Event Type (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event_type\": \"INVALID\",\n  \"license_plate\": \"ABC1234\",\n  \"sector\": \"A\",\n  \"latitude\": -23.5505,\n  \"longitude\": -46.6333\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/webhook",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "webhook"
+              ]
+            },
+            "description": "Teste com tipo de evento inválido"
+          }
+        },
+        {
+          "name": "Missing Required Fields (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event_type\": \"ENTRY\",\n  \"license_plate\": \"ABC1234\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/webhook",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "webhook"
+              ]
+            },
+            "description": "Teste sem campos obrigatórios"
+          }
+        }
+      ]
+    }
+  ]
+}

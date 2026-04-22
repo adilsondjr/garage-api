@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: garage-management
+  datasource:
+    url: jdbc:mysql://localhost:3306/garage?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: ${DB_USER:root}
+    password: ${DB_PASSWORD:password}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+  cache:
+    type: simple
+  server:
+    port: 8080
+
+simulator:
+  url: http://simulator:3000
+  garage-endpoint: /garage
+
+pricing:
+  low-occupancy-threshold: 0.25
+  medium-occupancy-threshold: 0.5
+  high-occupancy-threshold: 0.75
+  low-occupancy-multiplier: 0.9
+  medium-occupancy-multiplier: 1.0
+  high-occupancy-multiplier: 1.1
+  full-occupancy-multiplier: 1.25
+  free-parsing-minutes: 30
+
+logging:
+  level:
+    root: INFO
+    br.com.teste: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
