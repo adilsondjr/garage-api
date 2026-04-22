@@ -3,6 +3,7 @@ package br.com.teste.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import java.time.LocalDateTime;
 
@@ -24,10 +25,12 @@ public record VehicleEventRequest(
     String sector,
 
     @JsonProperty("latitude")
+    @NotNull(message = "Latitude cannot be null")
     @Schema(description = "Latitude coordinate (required for PARKED events)", example = "10.5")
     Double latitude,
 
     @JsonProperty("longitude")
+    @NotNull(message = "Longitude cannot be null")
     @Schema(description = "Longitude coordinate (required for PARKED events)", example = "20.5")
     Double longitude,
 
